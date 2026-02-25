@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weekly Food Planner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Умный план питания</p>
+          <h1>План меню на неделю</h1>
+          <p class="subtitle">
+            Красивый UX/UI как в референсе: тёмная сетка, разные меню по дням,
+            авто‑подбор блюд и картинок.
+          </p>
+        </div>
+        <div class="today-badge" id="todayBadge"></div>
+      </header>
+
+      <section class="controls">
+        <div class="panel">
+          <h2>⚙️ Умные настройки</h2>
+          <div class="field-grid">
+            <label>
+              Профиль питания
+              <select id="profileSelect">
+                <option value="balanced">Сбалансированное</option>
+                <option value="highProtein">Высокобелковое</option>
+                <option value="vegetarian">Вегетарианское</option>
+                <option value="quick">Быстро и просто</option>
+              </select>
+            </label>
+
+            <label>
+              Калории в день
+              <input id="caloriesInput" type="number" min="1200" max="4000" value="2300" />
+            </label>
+
+            <label>
+              Исключить продукты (через запятую)
+              <input id="excludeInput" type="text" placeholder="лук, свинина, грибы" />
+            </label>
+
+            <label>
+              Авто‑обновление каждый день
+              <select id="dailyModeSelect">
+                <option value="on">Включено</option>
+                <option value="off">Выключено</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="actions">
+            <button id="regenerateBtn">Сгенерировать неделю заново</button>
+            <button id="saveBtn" class="ghost">Сохранить настройки</button>
+          </div>
+        </div>
+      </section>
+
+      <main class="layout">
+        <section class="week-table-wrap">
+          <table class="week-table" id="weekTable">
+            <thead>
+              <tr>
+                <th>День</th>
+                <th>Завтрак</th>
+                <th>Обед</th>
+                <th>Перекус</th>
+                <th>Ужин</th>
+              </tr>
+            </thead>
+            <tbody id="weekBody"></tbody>
+          </table>
+        </section>
+
+        <aside class="today-panel">
+          <h2>🍽️ Меню на сегодня</h2>
+          <p id="todayDateText"></p>
+          <div id="todayCards" class="cards"></div>
+        </aside>
+      </main>
+    </div>
+
+    <template id="cardTemplate">
+      <article class="meal-card">
+        <img alt="" loading="lazy" />
+        <div>
+          <p class="meal-tag"></p>
+          <h3></h3>
+        </div>
+      </article>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
